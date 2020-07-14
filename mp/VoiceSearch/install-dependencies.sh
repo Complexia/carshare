@@ -7,4 +7,4 @@ pip3 install --upgrade google-auth-oauthlib[tool]
 echo '>>> Goodle SDK oauth installed'
 echo '>>> Authenticating now...'
 google-oauthlib-tool --scope https://www.googleapis.com/auth/assistant-sdk-prototype \
-      --save --headless --client-secrets client_secret_1088330374543-hsfhqamtj3s01qm3h45htc90k23dim1s.apps.googleusercontent.com.json
+      --save --headless --client-secrets client_secret_"insert key here"
