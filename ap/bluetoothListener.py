@@ -13,7 +13,7 @@ class BluetoothListener:
     def listen(self):
 
         while True:
-            result = bluetooth.lookup_name('f0:5c:77:be:dc:c6', timeout=20)
+            result = bluetooth.lookup_name('macAddress', timeout=20)
             if result:
                 action = 1
                 self.__console.engineerBluetoothResponse(action)
@@ -22,7 +22,7 @@ class BluetoothListener:
                 break
 
         while True:
-            result = bluetooth.lookup_name('f0:5c:77:be:dc:c6', timeout=20)
+            result = bluetooth.lookup_name('macAddress', timeout=20)
             if result == None:
                 action = 0
                 self.__console.engineerBluetoothResponse(action)
