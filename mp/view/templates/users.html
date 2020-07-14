@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}Users{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>All users that match search query {{ searchQuery }}</h1>
+    <table>
+        {% for user in users %}
+            <tr>
+                <td>
+                    <a href={{ url_for('user', id=user['id']) }}>User {{ user['id'] }}</a>
+                </td>
+                <td>{{ user['username'] }}</td>
+                <td>{{ user['firstName'] }}</td>
+                <td>{{ user['lastName'] }}</td>
+                <td>{{ user['email'] }}</td>
+                <td>{{ user['type'] }}</td>
+            </tr>
+        {% endfor %}
+    </table>    
+{% endblock %}

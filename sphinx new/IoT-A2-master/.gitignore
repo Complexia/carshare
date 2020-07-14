@@ -1,0 +1,8 @@
+__pycache__
+images/*
+!images/.gitkeep
+*.pyc
+git.sh
+.vscode
+__pycache__/
+*.pickle

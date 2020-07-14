@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block title %}Viewing all Cars{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>Cars</h1>
+    {% with form=form %}
+        {% include 'partials/searchForm.html' %}
+    {% endwith %}
+    {% for car in cars %}
+        <h3>Car {{ car['id'] }}</h3>
+        <a href={{ url_for('car', id=car['id']) }}>View</a>
+        <ul>
+            <li>Make: {{ car['make'] }}</li>
+            <li>Body Type: {{ car['bodyType'] }}</li>
+            <li>Cost per hour: {{ car['costPerHour'] }}</li>
+        </ul>
+    {% endfor %}
+{% endblock %}

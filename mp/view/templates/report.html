@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}Report info{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>Report Info</h1>
+    {% if loggedInUser %}
+        
+
+        <h3>Report Id: {{ reports['id'] }}</h3>
+        
+        <ul>
+            <li>Report description: {{ reports['description'] }}</li>
+            <a href={{ url_for('viewLocation', id=reports['id']) }}>View Location</a>
+            
+        </ul>
+
+    {% else %}
+        <p>Log in to see this page.</p>
+    {% endif %}
+{% endblock %}

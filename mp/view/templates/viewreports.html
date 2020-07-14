@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block title %}Viewing Car Reports{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>This car's reports</h1>
+    {% if loggedInUser %}
+        {% if reports and reports|length > 0 %}
+        
+            {% for reports in reports %}
+            
+                {% if reports['open'] == True %}
+                    <h3>Report Id: {{ reports['id'] }}</h3>
+                    
+                    <ul>
+                        <li>Report description: {{ reports['description'] }}</li>
+                        <a href={{ url_for('viewReport', id=reports['id']) }}>View</a>
+                    </ul>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p>This car has no active reports.</p>
+        {% endif %}
+    {% else %}
+        <p>Log in to see this page.</p>
+    {% endif %}
+{% endblock %}

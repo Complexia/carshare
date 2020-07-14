@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block title %}Viewing Bookings{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>Your Active Bookings</h1>
+    {% if loggedInUser %}
+        {% if bookings and bookings|length > 0 %}
+            {% for booking in bookings %}
+                {% if booking['user']['id'] == loggedInUser.getId() and booking['active'] == True %}
+                    <h3>Booking {{ booking['id'] }}</h3>
+                    <a href={{ url_for('booking', id=booking['id']) }}>View</a>
+                    <ul>
+                        <li>From {{ booking['startTime'] }}</li>
+                        <li>To {{ booking['endTime'] }}</li>
+                    </ul>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p>You have no active bookings currently.</p>
+        {% endif %}
+    {% else %}
+        <p>You must be logged in to view your bookings.</p>
+    {% endif %}
+{% endblock %}

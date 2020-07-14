@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}Editing User {{ user['id'] }}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    {% with form=form %}
+        {% with user=user %}
+            {% include 'partials/userForm.html' %}
+        {% endwith %}
+    {% endwith %}
+{% endblock %}

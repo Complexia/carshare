@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}Booking for {{ carId }}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>Create booking for Car {{ carId }}</h1>
+    {% with carId=carId, userId=userId %}
+        {% include 'partials/bookingForm.html' %}
+    {% endwith %}
+    <p>All succesful bookings will be added to your Google calendar.</p>
+{% endblock %}

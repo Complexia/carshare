@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>Admin Dashboard</h1>
+    <p>Welcome to Car Share Service!</p>
+    <h4>Users:</h4>
+    <h6>Search users by keyword:</h6>
+    <form action={{ url_for('users') }} method="POST">
+        <input type="text" name="query" placeholder="Enter a search keyword here...">
+        <input type="submit" value="Search">
+    </form>
+    <a href={{ url_for('newUser') }}>Add user</a>
+    <table>
+        {% for user in users %}
+            {% if user['id'] != loggedInUser.getId() %}
+                <tr>
+                    <td>
+                        <a href={{ url_for('user', id=user['id']) }}>User {{ user['id'] }}</a>
+                    </td>
+                    <td>{{ user['username'] }}</td>
+                    <td>{{ user['firstName'] }}</td>
+                    <td>{{ user['lastName'] }}</td>
+                    <td>{{ user['email'] }}</td>
+                    <td>{{ user['type'] }}</td>
+                    <td>
+                        <a href={{ url_for('updateUser', id=user['id']) }}>Update</a>
+                    </td>
+                    <td>
+                        <a href={{ url_for('deleteUser', id=user['id']) }}>Delete</a>
+                    </td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+    </table>
+    <h4>Cars:</h4>
+    <h6>Search cars by keyword:</h6>
+    <form action={{ url_for('cars') }} method="POST">
+        <input type="text" name="query" placeholder="Enter a search keyword here...">
+        <input type="submit" value="Search">
+    </form>
+    <h6>Search cars by voice:</h6>
+    <form action={{ url_for('voice') }} method="POST">
+        <input type="submit" value="Press and speak">
+    </form>
+    <a href={{ url_for('newCar') }}>Add car</a>
+    <table>
+        {% for car in cars %}
+            <tr>
+                <td>
+                    <a href={{ url_for('car', id=car['id']) }}>Car {{ car['id'] }}</a>
+                </td>
+                <td>{{ car['make'] }}</td>
+                <td>{{ car['bodyType'] }}</td>
+                <td>{{ car['colour'] }}</td>
+                <td>{{ car['seats'] }}</td>
+                <td>{{ car['location']['x'] }}</td>
+                <td>{{ car['location']['y'] }}</td>
+                <td>{{ car['costPerHour'] }}</td>
+                <td>
+                    <a href={{ url_for('reportCar', id=car['id']) }}>Report</a>
+                </td>
+                <td>
+                    <a href={{ url_for('updateCar', id=car['id']) }}>Update</a>
+                </td>
+                <td>
+                    <a href={{ url_for('deleteCar', id=car['id']) }}>Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

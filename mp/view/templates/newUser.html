@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block title %}Create User{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>New User</h1>
+    {% include 'partials/userForm.html' %}
+{% endblock %}

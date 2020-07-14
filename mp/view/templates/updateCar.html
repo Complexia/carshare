@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}Editing Car {{ car['id'] }}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    {% with form=form %}
+        {% with car=car %}
+            {% include 'partials/carForm.html' %}
+        {% endwith %}
+    {% endwith %}
+{% endblock %}

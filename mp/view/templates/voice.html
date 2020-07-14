@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>Cars</h1>
+    
+    {% for car in cars %}
+        <h3>Car {{ car['id'] }}</h3>
+        <a href={{ url_for('car', id=car['id']) }}>View</a>
+        <ul>
+            <li>Make: {{ car['make'] }}</li>
+            <li>Body Type: {{ car['bodyType'] }}</li>
+            <li>Cost per hour: {{ car['costPerHour'] }}</li>
+        </ul>
+    {% endfor %}
+{% endblock %}

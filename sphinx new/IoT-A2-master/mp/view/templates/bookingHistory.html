@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+{% block title %}Your Booking History{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>Booking History</h1>
+    {% if loggedInUser %}
+        {% if not isAdmin %}
+            {% if bookings and bookings|length > 0 %}
+                {% for booking in bookings %}
+                    {% if booking['user']['id'] == loggedInUser.getId() %}
+                        <h3>Booking {{ booking['id'] }}</h3>
+                        <a href={{ url_for('booking', id=booking['id']) }}>View</a>
+                        <ul>
+                        </ul>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+                <p>You currently have no past or inactive bookings.</p>
+            {% endif %}
+        {% else %}
+            {% if bookings and bookings|length > 0 %}
+                {% for booking in bookings %}
+                    <h3>Booking {{ booking['id'] }}</h3>
+                    <a href={{ url_for('booking', id=booking['id']) }}>View</a>
+                    <ul>
+                    </ul>
+                {% endfor %}
+            {% else %}
+                <p>There are currently no inactive bookings.</p>
+            {% endif %}
+        {% endif %}
+    {% else %}
+        <p>You must be logged in to view your booking history.</p>
+    {% endif %}
+{% endblock %}

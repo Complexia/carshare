@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}Login{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>Login</h1>
+    {% with form=form %}
+        {% include 'partials/loginForm.html' %}
+    {% endwith %}
+    <p>Please note that after logging in we require your Google credentials.</p>
+{% endblock %}

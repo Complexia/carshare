@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block title %}Create Car{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>New Car</h1>
+    {% include 'partials/carForm.html' %}
+{% endblock %}

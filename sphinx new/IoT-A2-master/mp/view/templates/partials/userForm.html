@@ -1,0 +1,33 @@
+<form action="" method="post" class="md-form">
+    {{ form.csrf_token() }}
+    <fieldset>
+        {{ form.username.label }}
+        {{ form.username(value=user['username'] if user else '') }}
+    </fieldset>
+    <!-- updating passwords should be handled separately -->
+    {% if not user %}
+        <fieldset>
+            {{ form.password.label }}
+            {{ form.password() }}
+        </fieldset>
+    {% endif %}
+    <fieldset>
+        {{ form.email.label }}
+        {{ form.email(value=user['email'] if user else '') }}
+    </fieldset>
+    <fieldset>
+        {{ form.firstName.label }}
+        {{ form.firstName(value=user['firstName'] if user else '') }}
+    </fieldset>
+    <fieldset>
+        {{ form.lastName.label }}
+        {{ form.lastName(value=user['lastName'] if user else '') }}
+    </fieldset>
+    <fieldset>
+        {{ form.userType.label }}
+        {{ form.userType(value=user['type'] if user else '') }}
+    </fieldset>
+    <fieldset>
+        {{ form.submit(value='Update User' if user else 'Create User') }}
+    </fieldset>
+</form>

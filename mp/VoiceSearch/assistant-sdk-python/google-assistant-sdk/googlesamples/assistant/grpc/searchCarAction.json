@@ -1,0 +1,84 @@
+{
+    "manifest": {
+        "displayName": "Search a car",
+        "invocationName": "Search Car",
+        "category": "Search"
+    },
+    "actions": [
+        {
+            "name": "com.example.actions.SearchCar",
+            "availability": {
+                "deviceClasses": [
+                    {
+                        "assistantSdkDevice": {}
+                    }
+                ]
+            },
+            "intent": {
+                "name": "com.example.intents.SearchCar",
+                "parameters": [
+                    {
+                        "name": "carName",
+                        "type": "SchemaOrg_Text"
+                    }
+                ],
+                "trigger": {
+                    "queryPatterns": [
+                        "search $SchemaOrg_Text:carName",
+                        "search for $SchemaOrg_Text:carName"
+                    ]
+                }
+            },
+            "fulfillment": {
+                "staticFulfillment": {
+                    "templatedResponse": {
+                        "items": [
+                            {
+                                "simpleResponse": {
+                                    "textToSpeech": "Searching for $carName"
+                                }
+                            },
+                            {
+                                "deviceExecution": {
+                                    "command": "com.example.commands.SearchCar",
+                                    "params": {
+                                        "carName": "$carName"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    ],
+    "types": [
+        {
+            "name": "$Speed",
+            "entities": [
+                {
+                    "key": "SLOWLY",
+                    "synonyms": [
+                        "slowly",
+                        "slow"
+                    ]
+                },
+                {
+                    "key": "NORMALLY",
+                    "synonyms": [
+                        "normally",
+                        "regular"
+                    ]
+                },
+                {
+                    "key": "QUICKLY",
+                    "synonyms": [
+                        "quickly",
+                        "fast",
+                        "quick"
+                    ]
+                }
+            ]
+        }
+    ]
+}

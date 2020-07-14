@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block title %}Manager Dashboard{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>Manager Dashboard</h1>
+    <p>Welcome to Car Share Service!</p>
+    <img src="/bar.png?carIds={{carIds}}&rentalAmounts={{rentalAmounts}}" alt="Most Popular Rental Cars"/>
+    <img src="/line.png?months={{months}}&bookingCounts={{bookingCounts}}" alt="Number of Bookings by Month"/>
+    <img src="/pie.png?userTypes={{userTypes}}&userCounts={{userCounts}}" alt="Number of Users by Role"/>
+{% endblock %}

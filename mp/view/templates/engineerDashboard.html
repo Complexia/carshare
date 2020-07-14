@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block title %}Engineer Dashboard{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>Engineer Dashboard</h1>
+    <p>Welcome to Car Share Service!</p>
+    
+    <h4>Cars:</h4>
+    <h6>Search cars by keyword:</h6>
+    <form action={{ url_for('cars') }} method="POST">
+        <input type="text" name="query" placeholder="Enter a search keyword here...">
+        <input type="submit" value="Search">
+    </form>
+    
+    <a href={{ url_for('newCar') }}>Add car</a>
+    <table>
+        {% for car in cars %}
+            <tr>
+                <td>
+                    <a href={{ url_for('car', id=car['id']) }}>Car {{ car['id'] }}</a>
+                </td>
+                <td>{{ car['make'] }}</td>
+                <td>{{ car['bodyType'] }}</td>
+                <td>{{ car['colour'] }}</td>
+                <td>{{ car['seats'] }}</td>
+                <td>{{ car['location']['x'] }}</td>
+                <td>{{ car['location']['y'] }}</td>
+                <td>{{ car['costPerHour'] }}</td>
+                <td>
+                    <a href={{ url_for('viewReportCar', id=car['id']) }}>View report</a>
+                </td>
+                
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

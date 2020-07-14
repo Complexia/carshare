@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block title %}Register{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>Register</h1>
+    {% with form=form %}
+        {% include 'partials/registerForm.html' %}
+    {% endwith %}
+{% endblock %}

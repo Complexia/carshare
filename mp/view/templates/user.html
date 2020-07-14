@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}User {{ user['id'] }}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>User {{ user['id'] }}</h1>
+    <ul>
+        <li>Username: {{ user['username'] }}</li>
+        <li>Name: {{ user['firstName'] }} {{ user['lastName'] }}</li>
+        <li>Email: {{ user['email'] }}</li>
+        <li>Type: {{ user['type'] }}</li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,8 @@
+<form action="" method="post" class="md-form">
+    {{ form.csrf_token() }}
+    <fieldset>
+        {{ form.query.label }}
+        {{ form.query() }}
+    </fieldset>
+    {{ form.submit() }}
+</form>

@@ -1,0 +1,22 @@
+<form action="" method="post" class="md-form">
+    {{ form.csrf_token() }}
+    {{ form.userId(value=userId) }}
+    {{ form.carId(value=carId) }}
+    <fieldset>
+        {{ form.startMonth.label }}
+        {{ form.startMonth() }}
+    </fieldset>
+    <fieldset>
+        {{ form.startDay.label }}
+        {{ form.startDay() }}
+    </fieldset>
+    <fieldset>
+        {{ form.endMonth.label }}
+        {{ form.endMonth() }}
+    </fieldset>
+    <fieldset>
+        {{ form.endDay.label }}
+        {{ form.endDay() }}
+    </fieldset>
+    {{ form.submit() }}
+</form>

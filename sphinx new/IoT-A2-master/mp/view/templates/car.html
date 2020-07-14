@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}Car {{ car['id'] }}{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1>Car {{ car['id'] }}</h1>
+    <a href="/cars/{{ car['id'] }}/book">Book</a>
+    <ul>
+        <li>Make: {{ car['make'] }}</li>
+        <li>Body Type: {{ car['bodyType'] }}</li>
+        <li>Cost per hour: {{ car['costPerHour'] }}</li>
+    </ul>
+{% endblock %}
